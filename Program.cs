@@ -39,6 +39,31 @@ PrintData($"Числа от {numM} до {numN}: ", numbersMN);
 //M = 1; N = 15 -> 120
 //M = 4; N = 8. -> 30
 
+// Запрос данных пользователя
+int ReadData(string line)
+{
+    Console.WriteLine(line);
+    int num = int.Parse(Console.ReadLine() ?? "1");
+    return num;
+}
+// Вывод Результата.
+void PrintData(string prefix, string num)
+{
+    Console.WriteLine(prefix + num);
+}
+// Считаем сумму элементов в промежутке от М до N
+int SumMN(int numM, int numN)
+{
+    
+    if (numM>=numN) return numN;
+    return numM + SumMN(numM+1, numN);
+}
+
+int numM = ReadData("Введите число M: ");
+int numN = ReadData("Введите число N: ");
+int summaMN = (numM<numN) ? SumMN(numM, numN):SumMN(numN, numM);
+PrintData($"Сумма элементов от {numM} до {numN} = ",summaMN.ToString());
+
 
 
 
